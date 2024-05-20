@@ -1,0 +1,132 @@
+.standings {
+  position: absolute;
+  display: flex;
+  padding-top: 100px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-family: "TitilliumWeb", sans-serif;
+  font-weight: 900;
+}
+
+.standings-table {
+  box-shadow: 0px 0px 20px black;
+}
+
+.standings table {
+  color: white;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.column-middle td {
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.column-names {
+  width: 100%;
+  text-align: center;
+  padding: 30px;
+}
+
+.column-combined-stats {
+  width: 100%;
+  text-align: center;
+}
+
+.seperator-team1 {
+  background-color: blue;
+}
+
+.seperator-team2 {
+  background-color: orange;
+}
+
+.seperator-middle,
+.seperator-team1,
+.seperator-team2 {
+  height: 5px;
+}
+
+.column-title {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.column-title td {
+  padding: 10px;
+  width: 175px;
+}
+
+.column-team-stats td {
+  font-size: 20px;
+  font-weight: 900;
+  padding: 20px;
+}
+
+.column-overall-stats td {
+  font-size: 20px;
+  font-weight: 900;
+  height: 65px;
+}
+
+.stat {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.overall-scores,
+.overall-goals,
+.overall-assists,
+.overall-saves,
+.overall-shots,
+.overall-demos,
+.overall-touches {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.overall-score-blue,
+.overall-goals-blue,
+.overall-assists-blue,
+.overall-saves-blue,
+.overall-shots-blue,
+.overall-demos-blue,
+.overall-touches-blue {
+  margin-right: auto;
+  width: 75px;
+}
+
+.overall-score-orange,
+.overall-goals-orange,
+.overall-assists-orange,
+.overall-saves-orange,
+.overall-shots-orange,
+.overall-demos-orange,
+.overall-touches-orange {
+  margin-left: auto;
+  width: 75px;
+}
+
+.progress {
+  height: 5px;
+  display: flex;
+  margin: 10px;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.progress-bar.blue {
+  background-color: blue;
+  height: 100%;
+}
+
+.progress-bar.orange {
+  background-color: orange;
+  height: 100%;
+}
