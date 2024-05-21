@@ -63,13 +63,13 @@ export const useMatchState = () => {
 
     const handleMatchCreated = () => {
       setMatchEnded(false);
-      resetMatchState();
+      // Do not reset currentMatchDisplay here, as we are continuing in the same series.
     };
 
     const resetMatchState = () => {
       setMatchNumber(0);
       localStorage.setItem("matchNumber", JSON.stringify(0));
-      setCurrentMatchDisplay(1);
+      setCurrentMatchDisplay(1); // Only reset here if starting a completely new series.
       localStorage.setItem("currentMatchDisplay", JSON.stringify(1));
       setBlueWins(0);
       localStorage.setItem("blueWins", JSON.stringify(0));

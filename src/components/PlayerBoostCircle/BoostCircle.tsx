@@ -8,6 +8,7 @@ import {
   BoostMeterWrapper,
 } from "./BoostCircle.style";
 import { BoostService } from "../../Services/Boost";
+import InnerCircleImage from "../../assets/BoostMeter.png";
 
 export const BoostCircle = () => {
   const { gameInfo } = useContext(GameInfoContext);
@@ -17,38 +18,73 @@ export const BoostCircle = () => {
     gameInfo.target
   );
 
-  const normalizedRadius = 150 - 10 * 2; //Inner radius - Thickness of ring * 2
-  const circumference = normalizedRadius * 2 * Math.PI;
+  const radius = 150;
+  const strokeWidth = 20;
+  const normalizedRadius = radius - strokeWidth;
+  const circumference = 2 * Math.PI * normalizedRadius;
 
   return (
     <BoostMeterWrapper>
       {spectatedPlayer && (
-        <svg height={150 * 2} width={150 * 2}>
+        <svg height={radius * 2} width={radius * 2}>
+          <defs>
+            <linearGradient
+              id="boostGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                style={{ stopColor: "#00ff00", stopOpacity: 1 }}
+              />
+              <stop
+                offset="100%"
+                style={{ stopColor: "#ff3c00", stopOpacity: 1 }}
+              />
+            </linearGradient>
+            <clipPath id="circleClip">
+              <circle cx="50%" cy="50%" r={normalizedRadius} />
+            </clipPath>
+          </defs>
           <BoostMeterRing
-            stroke={"#000000"}
+            stroke="url(#boostGradient)"
             strokeDasharray={`${circumference} ${circumference}`}
             $dashOffset={BoostService.getBoostBarCircumference(
               spectatedPlayer.boost,
               circumference
             )}
-            strokeWidth={10}
+            strokeWidth={strokeWidth}
             fill="transparent"
             r={normalizedRadius}
-            cx={150}
-            cy={150}
-          />
-          <BoostMeterInnerCircle
-            fill="#ffffff"
-            r={normalizedRadius - 10 / 2}
             cx="50%"
             cy="50%"
+            strokeLinecap="round"
+            style={{ zIndex: 1 }}
+          />
+          <BoostMeterInnerCircle
+            fill="transparent"
+            r={normalizedRadius}
+            cx="50%"
+            cy="50%"
+            style={{ zIndex: 2 }}
+          />
+          <image
+            href={InnerCircleImage}
+            x="7%"
+            y="7%"
+            height={normalizedRadius * 2}
+            width={normalizedRadius * 2}
+            clipPath="url(#circleClip)"
           />
           <BoostMeterText
-            fill="#000000"
+            fill="#ffffff"
             x="50%"
             y="50%"
             textAnchor="middle"
             dy=".3em"
+            style={{ zIndex: 4 }}
           >
             {spectatedPlayer.boost}
           </BoostMeterText>
