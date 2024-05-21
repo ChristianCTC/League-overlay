@@ -1,17 +1,4 @@
 @echo off
-
-REM Get the directory of the current script
-set script_dir=%~dp0
-
-echo Checking dependencies...
-call "%script_dir%install-dependencies.bat"
-if %errorlevel% neq 0 (
-    echo Failed to install dependencies. Exiting.
-    pause
-    exit /b %errorlevel%
-)
-
-echo Starting servers...
-start "Servers" cmd /k "npm start"
-
-pause
+start "Node Script" cmd /c "node ./sos-ws-relay-master/ws-relay"
+start "React Scripts" cmd /c "react-scripts start"
+start "NPM Start" cmd /c "npm start"
